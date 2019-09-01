@@ -1,5 +1,6 @@
-import re
-import sys
+import re   #Regular Expression tools
+import sys  #Command line arguments
+import os   #Existence of a file
 
 #splitting text into a list of words
 def split(text):
@@ -11,7 +12,8 @@ def split(text):
         return words
     else:
         return None
-    
+
+#Creating dictionary based on list of words    
 def createDict(wordList):
     myDict = {}
     if wordList is not None:
@@ -33,7 +35,6 @@ def main():
     inputFname = sys.argv[1]
     outputFname = sys.argv[2]
 
-    #Reading file
     inFile = open(inputFname, "r")
     text = inFile.read()
     #Writing to file
@@ -42,7 +43,7 @@ def main():
     words = split(text)
     newDict = createDict(words)
 
-    #Sorting, then writing to outPut.txt file
+    #Sorting, then writing to output file
     for key, val in sorted(newDict.items()):
         toFile = key + " " + str(val)
         outFile.write(toFile + '\n')
